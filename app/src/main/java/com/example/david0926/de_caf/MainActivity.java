@@ -1,8 +1,12 @@
 package com.example.david0926.de_caf;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,17 +24,64 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        //Toolbar & TabLayout
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+
+
+        tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
+        View view1 = getLayoutInflater().inflate(R.layout.custom_tab, null);
+        view1.findViewById(R.id.icon).setBackgroundResource(R.drawable.icon_cafe);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view1));
+
+        View view2 = getLayoutInflater().inflate(R.layout.custom_tab, null);
+        view2.findViewById(R.id.icon).setBackgroundResource(R.drawable.icon_log);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view2));
+
+        View view3 = getLayoutInflater().inflate(R.layout.custom_tab, null);
+        view3.findViewById(R.id.icon).setBackgroundResource(R.drawable.icon_health);
+        tabLayout.addTab(tabLayout.newTab().setCustomView(view3));
+
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        final ViewPager viewPager = findViewById(R.id.pager);
+        final TabAdapter adapter = new TabAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
+
+
+
+
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
