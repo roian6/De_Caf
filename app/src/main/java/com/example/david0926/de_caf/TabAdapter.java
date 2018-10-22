@@ -4,6 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.david0926.de_caf.Caffeine.Tab_Caffeine;
+import com.example.david0926.de_caf.Health.Tab_Health;
+import com.example.david0926.de_caf.Log.Tab_Log;
+
 public class TabAdapter extends FragmentStatePagerAdapter{
 
     int tabNum;
