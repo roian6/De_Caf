@@ -32,19 +32,21 @@ public class Tab_Caffeine extends android.support.v4.app.Fragment{
         BarChart barChart = v.findViewById(R.id.barchart);
 
         List<BarEntry> entries = new ArrayList<BarEntry>();
-        entries.add(new BarEntry(1, 3));
+        entries.add(new BarEntry(1, 7));
         entries.add(new BarEntry(2, 5));
-        entries.add(new BarEntry(3, 2));
-        entries.add(new BarEntry(4, 7));
-        entries.add(new BarEntry(5, 2));
-        entries.add(new BarEntry(6, 4));
-        entries.add(new BarEntry(7, 1));
+        entries.add(new BarEntry(3, 3));
+        entries.add(new BarEntry(4, 5));
+        entries.add(new BarEntry(5, 7));
+        entries.add(new BarEntry(6, 3));
+        entries.add(new BarEntry(7, 5));
 
         BarDataSet dataset = new BarDataSet(entries,"");
 
         BarData data = new BarData(dataset);
         dataset.setColors(ColorTemplate.JOYFUL_COLORS);
         dataset.setDrawValues(false);
+        data.setBarWidth((float)0.6);
+
         //barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(labels));
         barChart.getXAxis().setTextColor(Color.WHITE);
         barChart.setDrawValueAboveBar(false);
@@ -73,13 +75,13 @@ public class Tab_Caffeine extends android.support.v4.app.Fragment{
         LineChart lineChart = v.findViewById(R.id.linechart);
 
         List<Entry> entries2 = new ArrayList<Entry>();
-        entries2.add(new Entry(1, 3));
+        entries2.add(new Entry(1, 7));
         entries2.add(new Entry(2, 5));
-        entries2.add(new Entry(3, 2));
-        entries2.add(new Entry(4, 7));
-        entries2.add(new Entry(5, 2));
-        entries2.add(new Entry(6, 4));
-        entries2.add(new Entry(7, 1));
+        entries2.add(new Entry(3, 3));
+        entries2.add(new Entry(4, 5));
+        entries2.add(new Entry(5, 7));
+        entries2.add(new Entry(6, 3));
+        entries2.add(new Entry(7, 5));
 
         LineDataSet dataset2 = new LineDataSet(entries2,"");
 
